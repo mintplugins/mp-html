@@ -70,12 +70,12 @@ function mp_html_in_post_textdomain() {
 
 
 	// Traditional WordPress plugin locale filter
-	$locale        = apply_filters( 'plugin_locale',  get_locale(), 'mp_html_in_post' );
-	$mofile        = sprintf( '%1$s-%2$s.mo', 'mp_html_in_post', $locale );
+	$locale        = apply_filters( 'plugin_locale',  get_locale(), 'mp-html-in-post' );
+	$mofile        = sprintf( '%1$s-%2$s.mo', 'mp-html-in-post', $locale );
 
 	// Setup paths to current locale file
 	$mofile_local  = $mp_html_in_post_lang_dir . $mofile;
-	$mofile_global = WP_LANG_DIR . '/mp_html_in_post/' . $mofile;
+	$mofile_global = WP_LANG_DIR . '/mp-html-in-post/' . $mofile;
 
 	if ( file_exists( $mofile_global ) ) {
 		// Look in global /wp-content/languages/mp_html_in_post folder
@@ -110,7 +110,7 @@ if (!function_exists('mp_core_textdomain')){
 	/**
 	 * Check if wp_core in installed
 	 */
-	include_once( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/plugin-checker/included-plugins/mp_core_check.php' );
+	include_once( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/plugin-checker/included-plugins/mp-core-check.php' );
 	
 }
 /**
@@ -122,7 +122,7 @@ else{
 	/**
 	 * Create Metabox for HTML repeater for posts
 	 */
-	require( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/metaboxes/html_repeater/html_repeater.php' );
+	require( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/metaboxes/html-repeater/html-repeater.php' );
 	
 	/**
 	 * Enqueue Scripts for Syntax Highlighter
