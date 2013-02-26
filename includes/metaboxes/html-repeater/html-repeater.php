@@ -69,10 +69,11 @@ function mp_html_in_post_display_html( $atts ) {
 	global $mp_html_in_post_metabox;
 	$vars =  shortcode_atts( array('repeater_number' => '0'), $atts );
 	$vars['repeater_number'] = intval($vars['repeater_number'])-1;
+	
 	//Get all the fields in a specific repeater to an array
-	$html_snippets = $mp_html_in_post_metabox->get_repeater_field(get_the_ID(), 'html_repeater');
+	$html_snippets = get_post_meta( get_the_ID(), $key = 'html_repeater', $single = true );
 	
 	//Get a specific field from that array
-	return '<pre><pre class="brush: js;">' . $html_snippets[$vars['repeater_number']]['html_box']['field_value'] . '</pre></pre>';
+	return '<pre><pre class="brush: js;">' . $html_snippets[$vars['repeater_number']]['html_box'] . '</pre></pre>';
 }
 add_shortcode( 'display_html', 'mp_html_in_post_display_html' );
