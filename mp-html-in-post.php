@@ -96,36 +96,38 @@ add_action( 'init', 'mp_html_in_post_textdomain', 1 );
 | INCLUDES
 |--------------------------------------------------------------------------
 */
-
-/**
- * If mp_core isn't active, stop and install it now
- */
-if (!function_exists('mp_core_textdomain')){
-	
+function mp_html_in_post_include_files(){
 	/**
-	 * Include Plugin Checker
+	 * If mp_core isn't active, stop and install it now
 	 */
-	require( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/plugin-checker/plugin-checker.php' );
-	
-	/**
-	 * Check if wp_core in installed
-	 */
-	include_once( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/plugin-checker/included-plugins/mp-core-check.php' );
-	
-}
-/**
- * Otherwise, if mp_core is active, carry out the plugin's functions
- */
-else{
-
+	if (!function_exists('mp_core_textdomain')){
 		
+		/**
+		 * Include Plugin Checker
+		 */
+		require( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/plugin-checker/plugin-checker.php' );
+		
+		/**
+		 * Check if wp_core in installed
+		 */
+		include_once( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/plugin-checker/included-plugins/mp-core-check.php' );
+		
+	}
 	/**
-	 * Create Metabox for HTML repeater for posts
+	 * Otherwise, if mp_core is active, carry out the plugin's functions
 	 */
-	require( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/metaboxes/html-repeater/html-repeater.php' );
+	else{
 	
-	/**
-	 * Enqueue Scripts for Syntax Highlighter
-	 */
-	require( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/misc-functions/enqueue-scripts.php' );
+			
+		/**
+		 * Create Metabox for HTML repeater for posts
+		 */
+		require( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/metaboxes/html-repeater/html-repeater.php' );
+		
+		/**
+		 * Enqueue Scripts for Syntax Highlighter
+		 */
+		require( MP_HTML_IN_POST_PLUGIN_DIR . 'includes/misc-functions/enqueue-scripts.php' );
+	}
 }
+add_action('plugins_loaded', 'mp_html_in_post_include_files', 9);
