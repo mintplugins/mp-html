@@ -121,7 +121,7 @@ function mp_html_include_files(){
 		/**
 		 * Update script - keeps this plugin up to date
 		 */
-		require( MP_HTML_ADDON_PLUGIN_DIR . 'includes/updater/mp-html-update.php' );
+		require( MP_HTML_PLUGIN_DIR . 'includes/updater/mp-html-update.php' );
 			
 		/**
 		 * Create Metabox for HTML repeater for posts
